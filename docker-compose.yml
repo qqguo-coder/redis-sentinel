@@ -1,0 +1,68 @@
+version: '3.4'
+services:
+  master:
+    image: redis
+    container_name: master
+    restart: always
+    tty: true
+    volumes:
+      - ./conf:/usr/local/etc/redis/conf
+      - ./data/master:/data
+    command: redis-server /usr/local/etc/redis/conf/master.conf
+    ports:
+      - "6379:6379"
+  slave-1:
+    image: redis
+    container_name: slave-1
+    restart: always
+    tty: true
+    volumes:
+      - ./conf:/usr/local/etc/redis/conf
+      - ./data/slave-1:/data
+    command: redis-server /usr/local/etc/redis/conf/slave-1.conf
+    ports:
+      - "6380:6380"
+  slave-2:
+    image: redis
+    container_name: slave-2
+    restart: always
+    tty: true
+    volumes:
+      - ./conf:/usr/local/etc/redis/conf
+      - ./data/slave-2:/data
+    command: redis-server /usr/local/etc/redis/conf/slave-2.conf
+    ports:
+      - "6381:6381"
+  sentinel-1:
+    image: redis
+    container_name: sentinel-1
+    command: redis-sentinel /usr/local/etc/redis/conf/sentinel-1.conf
+    restart: always
+    tty: true
+    volumes:
+      - ./conf:/usr/local/etc/redis/conf
+      - ./data/sentinel-1:/data
+    ports:
+      - "26379:26379"
+  sentinel-2:
+    image: redis
+    container_name: sentinel-2
+    command: redis-sentinel /usr/local/etc/redis/conf/sentinel-2.conf
+    restart: always
+    tty: true
+    volumes:
+      - ./conf:/usr/local/etc/redis/conf
+      - ./data/sentinel-2:/data
+    ports:
+      - "26380:26380"
+  sentinel-3:
+    image: redis
+    container_name: sentinel-3
+    command: redis-sentinel /usr/local/etc/redis/conf/sentinel-3.conf
+    restart: always
+    tty: true
+    volumes:
+      - ./conf:/usr/local/etc/redis/conf
+      - ./data/sentinel-3:/data
+    ports:
+      - "26381:26381"
