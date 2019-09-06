@@ -2,7 +2,7 @@ version: '3.4'
 services:
   master:
     image: redis
-    container_name: master
+    # container_name: master
     restart: always
     tty: true
     volumes:
@@ -13,7 +13,7 @@ services:
       - "6379:6379"
   slave-1:
     image: redis
-    container_name: slave-1
+    # container_name: slave-1
     restart: always
     tty: true
     volumes:
@@ -24,7 +24,7 @@ services:
       - "6380:6380"
   slave-2:
     image: redis
-    container_name: slave-2
+    # container_name: slave-2
     restart: always
     tty: true
     volumes:
@@ -35,7 +35,7 @@ services:
       - "6381:6381"
   sentinel-1:
     image: redis
-    container_name: sentinel-1
+    # container_name: sentinel-1
     command: redis-sentinel /usr/local/etc/redis/conf/sentinel-1.conf
     restart: always
     tty: true
@@ -46,7 +46,7 @@ services:
       - "26379:26379"
   sentinel-2:
     image: redis
-    container_name: sentinel-2
+    # container_name: sentinel-2
     command: redis-sentinel /usr/local/etc/redis/conf/sentinel-2.conf
     restart: always
     tty: true
@@ -57,7 +57,7 @@ services:
       - "26380:26380"
   sentinel-3:
     image: redis
-    container_name: sentinel-3
+    # container_name: sentinel-3
     command: redis-sentinel /usr/local/etc/redis/conf/sentinel-3.conf
     restart: always
     tty: true

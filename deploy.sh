@@ -1,5 +1,5 @@
 # redis master ip
-REDIS_MASTER_IP=192.168.70.1
+REDIS_MASTER_IP=127.0.0.1
 # redis master port
 REDIS_MASTER_PORT=6379
 
